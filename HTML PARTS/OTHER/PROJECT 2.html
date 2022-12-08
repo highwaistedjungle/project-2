@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Silkscreen' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+<style>
+
+   
+    
+    
+body {
+    background-image: url("file:///D:/HTML%20PARTS/BACKGROUND-GRAPHICS1.png");
+    position: sticky;
+    vertical-align: top;
+    background-repeat: no-repeat;
+    background-size: 15in;
+   
+}
+ 
+
+
+
+body {
+    background-color: rgb(255, 255, 255);
+      visibility: initial;
+      size: 500
+    
+  }
+
+
+  
+.square-left {
+    margin: 25px;
+    width: 50px;
+    height: 100px;
+    background: rgb(0, 0, 0);
+    position: relative;
+    vertical-align: baseline;
+    font-size: 20px;}
+    body {
+    font-family: 'Silkscreen';font-size: 22px; text-align: center; width: 266px; height:266px;x;  border-radius:50px; vertical-align: bottom;
+
+
+  }
+
+  div {
+      width: 100px;
+      height: 100px;
+      background-image: url(file:///D:/HTML%20PARTS/IMAGE1.png)
+      position: relative;
+      animation-name: example;
+      animation-duration: 4s;
+    }
+    
+    @keyframes example {
+      0%   {background-color:red; left:0px; top:0px;}
+      25%  {background-color:yellow; left:200px; top:0px;}
+      50%  {background-color:blue; left:200px; top:200px;}
+      75%  {background-color:green; left:0px; top:200px;}
+      100% {background-color:red; left:0px; top:0px;}
+    }
+
+
+div {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: relative;
+      animation-name: example;
+      animation-duration: 4s;
+    }
+    
+    @keyframes example {
+      0%   {background-color:red; left:0px; top:0px;}
+      25%  {background-color:yellow; left:200px; top:0px;}
+      50%  {background-color:blue; left:200px; top:200px;}
+      75%  {background-color:green; left:0px; top:200px;}
+      100% {background-color:red; left:0px; top:0px;}
+    }  
+    nablaStyles {  /*this is a class I can reuse with as many elements as I want... note the (.) at the start*/
+    font-family: 'Nabla', cursive;
+    font-size:30px;
+}
+
+/*this is the parent DIV that houses both Elon images*/
+#windowParent { /*this is an ID -- note the # at the start*/
+    position: absolute;
+    height:250px;
+    width:250px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) rotate(0deg); /*this centers the element by offsetting half of itself vertically and horizontally*/
+    z-index:2;/*I need this to appear ABOVE the hidden red background that apears when I click Elon*/
+}
+
+#windowParent p { /*this affects ALL <p> elements that live inside of windowParent, which right now is just my "Click Elon" text*/
+    position:absolute; /*removed from flow, but still positioned in relation to its parent*/
+    width:100%; /*this is 100% width of its parent!!!*/
+    top: -50px; /*I'm making the "Click Elon" it go outside the edge of its parent*/
+    left:0px;
+    text-align:center;/*I can just align center for text*/
+    transform: translateY(-50%); /*this centers the element by offsetting half of itself vertically and horizontally*/
+    animation: float 1s ease infinite; /*this abbreviated code assigns an animation name and tells the float animation to last for 1 second, apply easing, and then repeat infinitely*/
+    overflow:auto; /*this is default, but if this were set to "hidden" it would not be seen cause it goes outside the bounds of its parent... try "hidden" and see*/
+}
+
+/*the float animation for the windowParent <p>*/
+@keyframes float {
+    0% {transform: translateY(-50%);}
+    50% {transform: translateY(-90%);} /*this changes the vertical offset slightly, half way through the animation*/
+    100% {transform: translateY(-50%);} /*returns to start at end*/
+}
+
+/*the spinning animation for the windowParent after Elon is clicked*/
+@keyframes floatMoreAndRotate {
+    0% {transform: translate(-50%, -50%) rotate(0deg);}
+    100% {transform: translate(-50%, -50%) rotate(360deg);} /*this changes the vertical offset slightly, half way through the animation*/
+}
+
+/*the scale animation for the windowParent after Elon is clicked*/
+@keyframes scaleBounce { 
+    0% {transform: translate(-50%, -50%) scale(1);}
+    10% {transform: translate(-50%, -50%) scale(.8);}
+    20% {transform: translate(-50%, -50%) scale(1);}
+    30% {transform: translate(-50%, -50%) scale(.8);}
+    40% {transform: translate(-50%, -50%) scale(1);}
+    50% {transform: translate(-50%, -50%) scale(.8);}
+    60% {transform: translate(-50%, -50%) scale(1);}
+    70% {transform: translate(-50%, -50%) scale(.8);}
+    80% {transform: translate(-50%, -50%) scale(1);}
+    90% {transform: translate(-50%, -50%) scale(.8);}
+    100% {transform: translate(-50%, -50%) scale(1);}
+}
+
+#myElonParent {
+    position:absolute;/*it's sharing space with a sibling right now -- the <p> element -- so I'm separting it with absolute*/
+    /*remember it still lives inside a parent DIV (windowParent), so it will be postioned in relation to that*/
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    width:90%;
+    height:90%;
+}
+
+#myElonParent img { /*this targets all <img> elements within #myElonParent, there are TWO!!! They could also share a CLASS too*/
+    position:absolute; /*remember it still lives inside a parent DIV, so it will be postioned in relation to that*/
+    height: 80%; /*if I use percent instead of fixed px (pixels), it will be that percentage of its parent*/
+    width: auto; /*I chose a height, but this maintains the aspect ratio of the image so it doesn't get distorted*/
+    left: -50px;
+    bottom: 0px; /*this puts the img at the bottom*/
+    transition: visibility 0s, opacity .75s;
+}
+
+/*start off first Elon image on top with opacity:.7 so it can be seen, but I want it to go to opacity:1 on hover (see below)*/
+#elonImageNormal {
+    opacity:.7;
+    z-index:2;
+}
+
+/*have second Elon image start off hidden and behind first image -- see z-index*/
+#elonImageTripping { 
+    opacity:0;
+    z-index:1;
+}
+
+/*have pointer cursor show and go to full opacity on hover of Elon*/
+#elonImageNormal:hover { 
+    opacity:1;
+    cursor:pointer;
+}
+
+#elonImageTripping:hover { 
+    cursor:pointer;
+}
+
+/*this is the green background that is hidden and then appears on click of Elon*/
+#greenBackground {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%; /*fill the screen*/
+    height:100%;
+    background-image: url("../images/wave-pixels.gif"); /*I'm using an animated GIF for my background*/
+    background-size:cover;
+    opacity:0; /*hide it initially*/
+    transition: opacity 2s; /*this allows the opacity to shift over time, and not just be instant*/
+}
+
+.blueStyles { /*this will be an override for the blue box, after I click Elon*/
+    background-color: rgba(20,90,90,.5); /*this uses the RBG values for color (you can get in Photoshop) and a value at the end for opacity -- .5 in this case*/
+}
+  
+.greenStyles { /*this will be an override for the blue box, after I click Elon*/
+    background-color: rgba(0,255,0,.5); /*this uses the RBG values for color (you can get in Photoshop) and a value at the end for opacity -- .5 in this case*/
+}
+</style>
+
+
+
+
+    
+
+
+
+</head>
+<body>
+    <link href='https://fonts.googleapis.com/css?family=Silkscreen' rel='stylesheet'>
+    <style>
+        body {
+        font-family: 'Silkscreen';font-size: 22px;
+    }
+    </style>  
+  
+    <t1>BUILD YOUR OWN LIFE</t1>
+    <p id="demo">START HERE.</p>
+
+    <script>
+    document.getElementById("demo").onclick = function() {myFunction()};
+    
+    function myFunction() {
+      document.getElementById("demo").innerHTML = "HERE WE GO!";
+    }
+    
+    </script>
+
+</body>
+
+<div>
+  <style> 
+    
+    </style>
+
+    
+</div>
+
+
+
+
+
+
+</html>

@@ -1,0 +1,16 @@
+.customizws
+
+body,html {
+    height:100%;
+    overflow:hidden;
+}
+body {
+    background-color: rgb(255, 255, 255);
+      visibility: initial;
+      size: 500
+    
+  }
+
+  body {
+    background-image: url("file:///Volumes/GIADASEPT/HTML%20PARTS/BACKGROUND%20GRAPHICS.png");
+   }
